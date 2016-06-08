@@ -11,7 +11,15 @@ import android.view.MenuItem;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+import co.com.spart.alarm.beans.Alarma;
+import co.com.spart.co.com.spart.services.AlarmaService;
+
 public class Inicio extends AppCompatActivity {
+
+    @Inject
+    private AlarmaService alarmaService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
