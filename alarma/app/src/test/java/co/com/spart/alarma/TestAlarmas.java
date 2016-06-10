@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.com.spart.alarm.beans.Alarma;
-import co.com.spart.co.com.spart.services.AlarmaService;
+import co.com.spart.services.AlarmaService;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -28,12 +28,12 @@ public class TestAlarmas {
     public void before() throws Exception{
         MockitoAnnotations.initMocks(this);
 
-        Mockito.when(this.alarmaService.getAlarmas()).thenReturn(new ArrayList<Alarma>());
+        Mockito.when(this.alarmaService.getAlarmas()).thenReturn(new ArrayList<String>());
     }
 
     @Test
     public void obtenerListaAlarmas() throws Exception{
-        List<Alarma> alarmas = null;
+        List<String> alarmas = null;
 
         alarmas = this.alarmaService.getAlarmas();
 

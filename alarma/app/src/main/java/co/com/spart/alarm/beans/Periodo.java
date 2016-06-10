@@ -3,7 +3,7 @@ package co.com.spart.alarm.beans;
 import java.util.Date;
 import java.util.Set;
 
-import co.com.spart.co.com.spart.alarm.constants.Dias;
+import co.com.spart.constants.Dias;
 
 /**
  * Created by john on 7/06/16.
