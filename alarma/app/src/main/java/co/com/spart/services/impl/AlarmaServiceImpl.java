@@ -1,5 +1,7 @@
 package co.com.spart.services.impl;
 
+import org.androidannotations.annotations.EBean;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,6 +13,7 @@ import co.com.spart.services.AlarmaService;
 /**
  * Created by john on 8/06/16.
  */
+@EBean(scope = EBean.Scope.Singleton)
 public class AlarmaServiceImpl implements AlarmaService{
     @Override
     public List<String> getAlarmas() throws Exception {

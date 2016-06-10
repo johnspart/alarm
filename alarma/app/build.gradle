@@ -21,7 +21,7 @@ android {
 }
 
 dependencies {
-    def daggerVersion = '2.4'
+    def androidAnnVer = '4.0.0'
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
@@ -29,7 +29,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
 
-    compile group: 'com.google.dagger', name: 'dagger', version: daggerVersion
-    apt group: 'com.google.dagger', name: 'dagger-compiler', version: daggerVersion
-    provided 'javax.annotation:jsr250-api:1.0'
+    apt "org.androidannotations:androidannotations:$androidAnnVer"
+    compile "org.androidannotations:androidannotations-api:$androidAnnVer"
+
 }
