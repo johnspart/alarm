@@ -13,6 +13,7 @@ import java.util.List;
 
 import co.com.spart.alarm.beans.Alarma;
 import co.com.spart.services.AlarmaService;
+import co.com.spart.services.impl.AlarmaServiceImpl;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -22,13 +23,13 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(MockitoJUnitRunner.class)
 public class TestAlarmas {
     @Mock
-    private AlarmaService alarmaService;
+    private AlarmaServiceImpl alarmaService;
 
     @Before
     public void before() throws Exception{
         MockitoAnnotations.initMocks(this);
 
-        Mockito.when(this.alarmaService.getAlarmas()).thenReturn(new ArrayList<String>());
+        //Mockito.when(this.alarmaService.getAlarmas()).thenReturn(new ArrayList<String>());
     }
 
     @Test

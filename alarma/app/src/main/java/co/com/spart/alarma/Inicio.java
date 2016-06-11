@@ -13,7 +13,9 @@ import android.widget.ListView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.ViewById;
 
 import co.com.spart.services.AlarmaService;
@@ -32,14 +34,19 @@ public class Inicio extends AppCompatActivity {
 
     @AfterViews
     protected void afterViews() {
-
         try {
-            this.arrAdapterAlarmas = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, this.alarmaService.getAlarmas());
+            this.arrAdapterAlarmas = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,android.R.id.text1, this.alarmaService.getAlarmas());
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         this.lstAlarmas.setAdapter(this.arrAdapterAlarmas);
 
+    }
+
+    @ItemClick(R.id.list)
+    public void selecccionAlarma(String item){
+        Snackbar.make(this.lstAlarmas, item, Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
     }
 }
