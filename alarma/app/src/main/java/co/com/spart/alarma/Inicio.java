@@ -1,55 +1,45 @@
 package co.com.spart.alarma;
 
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.Toast;
 
-import java.util.List;
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ItemClick;
+import org.androidannotations.annotations.ViewById;
 
+import co.com.spart.alarm.beans.Alarma;
+import co.com.spart.services.AlarmaService;
+import co.com.spart.services.impl.AlarmaServiceImpl;
+import co.com.spart.utils.AlarmArrayAdapter;
+
+@EActivity(R.layout.activity_inicio)
 public class Inicio extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        super.setContentView(R.layout.activity_inicio);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    @ViewById(R.id.list)
+    ListView lstAlarmas;
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+    AlarmArrayAdapter arrAdapterAlarmas;
 
+    @Bean(AlarmaServiceImpl.class)
+    AlarmaService alarmaService;
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_inicio, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    @AfterViews
+    protected void afterViews() {
+        try {
+            this.arrAdapterAlarmas = new AlarmArrayAdapter(this, this.alarmaService.getAlarmas());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return super.onOptionsItemSelected(item);
+
+        this.lstAlarmas.setAdapter(this.arrAdapterAlarmas);
+
+    }
+
+    @ItemClick(R.id.list)
+    public void selecccionAlarma(Alarma item) {
+        Toast.makeText(super.getApplicationContext(), item.toString(), Toast.LENGTH_LONG).show();
     }
 }

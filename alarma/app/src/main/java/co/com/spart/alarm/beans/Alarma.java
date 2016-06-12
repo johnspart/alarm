@@ -1,6 +1,7 @@
 package co.com.spart.alarm.beans;
 
-import java.util.Timer;
+import static co.com.spart.utils.DateUtils.HH_mm;
+import static co.com.spart.utils.DateUtils.getSringFormat;
 
 /**
  * Created by john on 3/06/16.
@@ -8,9 +9,13 @@ import java.util.Timer;
 public class Alarma {
     private Long consecutivo;
     private String usuario;
+    private String descripcion;
     private Periodo periodo;
     private Long repetir;
 
+    public Alarma() {
+        super();
+    }
 
     public Long getConsecutivo() {
         return consecutivo;
@@ -28,6 +33,14 @@ public class Alarma {
         this.usuario = usuario;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public Periodo getPeriodo() {
         return periodo;
     }
@@ -42,5 +55,10 @@ public class Alarma {
 
     public void setRepetir(Long repetir) {
         this.repetir = repetir;
+    }
+
+    @Override
+    public String toString() {
+        return this.descripcion == null ? "" : this.descripcion;
     }
 }

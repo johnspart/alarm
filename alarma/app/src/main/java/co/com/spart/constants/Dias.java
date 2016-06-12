@@ -1,4 +1,4 @@
-package co.com.spart.co.com.spart.alarm.constants;
+package co.com.spart.constants;
 
 /**
  * Created by john on 7/06/16.
