@@ -1,25 +1,19 @@
 package co.com.spart.alarma;
 
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
-import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.ViewById;
 
+import co.com.spart.alarm.beans.Alarma;
 import co.com.spart.services.AlarmaService;
 import co.com.spart.services.impl.AlarmaServiceImpl;
+import co.com.spart.utils.AlarmArrayAdapter;
 
 @EActivity(R.layout.activity_inicio)
 public class Inicio extends AppCompatActivity {
@@ -27,7 +21,7 @@ public class Inicio extends AppCompatActivity {
     @ViewById(R.id.list)
     ListView lstAlarmas;
 
-    ArrayAdapter<String> arrAdapterAlarmas;
+    AlarmArrayAdapter arrAdapterAlarmas;
 
     @Bean(AlarmaServiceImpl.class)
     AlarmaService alarmaService;
@@ -35,7 +29,7 @@ public class Inicio extends AppCompatActivity {
     @AfterViews
     protected void afterViews() {
         try {
-            this.arrAdapterAlarmas = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,android.R.id.text1, this.alarmaService.getAlarmas());
+            this.arrAdapterAlarmas = new AlarmArrayAdapter(this, this.alarmaService.getAlarmas());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,8 +39,7 @@ public class Inicio extends AppCompatActivity {
     }
 
     @ItemClick(R.id.list)
-    public void selecccionAlarma(String item){
-        Snackbar.make(this.lstAlarmas, item, Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
+    public void selecccionAlarma(Alarma item) {
+        Toast.makeText(super.getApplicationContext(), item.toString(), Toast.LENGTH_LONG).show();
     }
 }

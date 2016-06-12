@@ -20,14 +20,14 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Created by john on 3/06/16.
  */
-@RunWith(MockitoJUnitRunner.class)
 public class TestAlarmas {
-    @Mock
+
     private AlarmaServiceImpl alarmaService;
 
     @Before
     public void before() throws Exception{
-        MockitoAnnotations.initMocks(this);
+        this.alarmaService = new AlarmaServiceImpl();
+        //MockitoAnnotations.initMocks(this);
 
         //Mockito.when(this.alarmaService.getAlarmas()).thenReturn(new ArrayList<String>());
     }

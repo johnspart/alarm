@@ -9,6 +9,7 @@ import static co.com.spart.utils.DateUtils.getSringFormat;
 public class Alarma {
     private Long consecutivo;
     private String usuario;
+    private String descripcion;
     private Periodo periodo;
     private Long repetir;
 
@@ -32,6 +33,14 @@ public class Alarma {
         this.usuario = usuario;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public Periodo getPeriodo() {
         return periodo;
     }
@@ -50,6 +59,6 @@ public class Alarma {
 
     @Override
     public String toString() {
-        return new StringBuilder(getSringFormat(this.periodo.getTiempo(), HH_mm)).append("Dias a repetir").toString();
+        return this.descripcion == null ? "" : this.descripcion;
     }
 }
