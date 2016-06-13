@@ -15,8 +15,8 @@ import co.com.spart.services.AlarmaService;
 import co.com.spart.services.impl.AlarmaServiceImpl;
 import co.com.spart.utils.AlarmArrayAdapter;
 
-@EActivity(R.layout.activity_inicio)
-public class Inicio extends AppCompatActivity {
+@EActivity(R.layout.content_alarmas)
+public class ActAlarmas extends AppCompatActivity {
 
     @ViewById(R.id.list)
     ListView lstAlarmas;

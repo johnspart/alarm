@@ -60,8 +60,4 @@ public class AlarmArrayAdapter extends ArrayAdapter<Alarma> {
         return this.alarmas.get(position);
     }
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
 }

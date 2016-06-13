@@ -2,4 +2,13 @@
     <string name="app_name">Code Alarm</string>
     <string name="action_settings">Settings</string>
     <string name="alarmas">Alarmas</string>
+
+    <string-array name="menu_items">
+        <item>Alarmas</item>
+        <item>Neva alarma</item>
+        <item>Mi perfil</item>
+        <item>Mis amigos</item>
+        <item>Ayuda</item>
+        <item>Salir</item>
+    </string-array>
 </resources>
