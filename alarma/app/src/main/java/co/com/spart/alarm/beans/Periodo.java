@@ -12,7 +12,18 @@ import co.com.spart.utils.DateUtils;
 public class Periodo {
 
     private Set<Dias> dias;
-    private Date tiempo;
+    private Long hora;
+    private Long minuto;
+
+    public Periodo() {
+        super();
+    }
+
+    public Periodo(Set<Dias> dias, Long hora, Long minuto) {
+        this.dias = dias;
+        this.hora = hora;
+        this.minuto = minuto;
+    }
 
     public Set<Dias> getDias() {
         return dias;
@@ -22,15 +33,23 @@ public class Periodo {
         this.dias = dias;
     }
 
-    public Date getTiempo() {
-        return tiempo;
+    public Long getHora() {
+        return hora;
     }
 
-    public void setTiempo(Date tiempo) {
-        this.tiempo = tiempo;
+    public void setHora(Long hora) {
+        this.hora = hora;
+    }
+
+    public Long getMinuto() {
+        return minuto;
+    }
+
+    public void setMinuto(Long minuto) {
+        this.minuto = minuto;
     }
 
     public String getDescripcion() {
-        return new StringBuilder(DateUtils.getSringFormat(this.tiempo, DateUtils.HH_mm)).toString();
+        return new StringBuilder(this.hora.toString()).append(this.minuto.toString()).toString();
     }
 }

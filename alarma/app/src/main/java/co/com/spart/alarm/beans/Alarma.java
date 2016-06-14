@@ -1,5 +1,7 @@
 package co.com.spart.alarm.beans;
 
+import co.com.spart.alarm.orm.TAlarma;
+
 import static co.com.spart.utils.DateUtils.HH_mm;
 import static co.com.spart.utils.DateUtils.getSringFormat;
 
@@ -15,6 +17,14 @@ public class Alarma {
 
     public Alarma() {
         super();
+    }
+
+    public Alarma(TAlarma tAlarma) {
+        this.consecutivo = tAlarma.getConsecutivo();
+        this.usuario = tAlarma.getUsuario();
+        this.descripcion = tAlarma.getDescripcion();
+        this.periodo = new Periodo(tAlarma.getDias(), tAlarma.getHora(), tAlarma.getMinuto());
+        this.repetir = tAlarma.getRepetir();
     }
 
     public Long getConsecutivo() {

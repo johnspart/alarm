@@ -22,6 +22,7 @@ android {
 
 dependencies {
     def androidAnnVer = '4.0.0'
+    def ormLiteVersion = '4.48'
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
@@ -31,5 +32,12 @@ dependencies {
 
     apt "org.androidannotations:androidannotations:$androidAnnVer"
     compile "org.androidannotations:androidannotations-api:$androidAnnVer"
+
+    apt "org.androidannotations:ormlite:$androidAnnVer"
+    compile "org.androidannotations:ormlite-api:$androidAnnVer"
+
+    compile "com.j256.ormlite:ormlite-core:$ormLiteVersion"
+    compile "com.j256.ormlite:ormlite-android:$ormLiteVersion"
+
 
 }
